@@ -77,6 +77,9 @@ def apply_mask(image, mask, color, alpha=0.5):
                                   image[:, :, c] *
                                   (1 - alpha) + alpha * color[c] * 255,
                                   image[:, :, c])
+    if len(image.shape) != 3 or image.shape[2] != 3:
+        image = np.squeeze(image, axis = -1)
+        image = np.stack((image,) * 3, -1)
     return image
 
 
