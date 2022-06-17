@@ -358,11 +358,11 @@ class Dataset(object):
         # Load image
         image = skimage.io.imread(self.image_info[image_id]['path'])
         # If grayscale. Convert to RGB for consistency.
-        if image.ndim != 3:
-            image = skimage.color.gray2rgb(image)
+        #if image.ndim != 3:
+            #image = skimage.color.gray2rgb(image)
         # If has an alpha channel, remove it for consistency
-        if image.shape[-1] == 4:
-            image = image[..., :3]
+        #if image.shape[-1] == 4:
+            #image = image[..., :3]
         return image
 
     def load_mask(self, image_id):
@@ -455,7 +455,7 @@ def resize_image(image, min_dim=None, max_dim=None, min_scale=None, mode="square
         bottom_pad = max_dim - h - top_pad
         left_pad = (max_dim - w) // 2
         right_pad = max_dim - w - left_pad
-        padding = [(top_pad, bottom_pad), (left_pad, right_pad), (0, 0)]
+        padding = [(top_pad, bottom_pad), (left_pad, right_pad)]
         image = np.pad(image, padding, mode='constant', constant_values=0)
         window = (top_pad, left_pad, h + top_pad, w + left_pad)
     elif mode == "pad64":
@@ -476,7 +476,7 @@ def resize_image(image, min_dim=None, max_dim=None, min_scale=None, mode="square
             right_pad = max_w - w - left_pad
         else:
             left_pad = right_pad = 0
-        padding = [(top_pad, bottom_pad), (left_pad, right_pad), (0, 0)]
+        padding = [(top_pad, bottom_pad), (left_pad, right_pad)]
         image = np.pad(image, padding, mode='constant', constant_values=0)
         window = (top_pad, left_pad, h + top_pad, w + left_pad)
     elif mode == "crop":
