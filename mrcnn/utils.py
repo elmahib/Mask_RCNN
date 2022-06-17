@@ -357,6 +357,7 @@ class Dataset(object):
         """
         # Load image
         image = skimage.io.imread(self.image_info[image_id]['path'])
+        image = image[..., np.newaxis]
         # If grayscale. Convert to RGB for consistency.
         #if image.ndim != 3:
             #image = skimage.color.gray2rgb(image)
