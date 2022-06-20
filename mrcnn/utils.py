@@ -356,9 +356,9 @@ class Dataset(object):
         """Load the specified image and return a [H,W,3] Numpy array.
          """
          # Load image
-         image = skimage.io.imread(self.image_info[image_id]['path'])         
+        image = skimage.io.imread(self.image_info[image_id]['path'])         
          #image = image[..., np.newaxis] # Extending the size of the image to be (h,w,1)
-         return image
+        return image
 
     def load_mask(self, image_id):
         """Load instance masks for the given image.
