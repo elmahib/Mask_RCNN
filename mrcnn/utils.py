@@ -454,7 +454,7 @@ def resize_image(image, min_dim=None, max_dim=None, min_scale=None, mode="square
         bottom_pad = max_dim - h - top_pad
         left_pad = (max_dim - w) // 2
         right_pad = max_dim - w - left_pad
-        padding = [(top_pad, bottom_pad), (left_pad, right_pad)]
+        padding = [(top_pad, bottom_pad), (left_pad, right_pad), (0, 0)]
         image = np.pad(image, padding, mode='constant', constant_values=0)
         window = (top_pad, left_pad, h + top_pad, w + left_pad)
     elif mode == "pad64":
@@ -475,7 +475,7 @@ def resize_image(image, min_dim=None, max_dim=None, min_scale=None, mode="square
             right_pad = max_w - w - left_pad
         else:
             left_pad = right_pad = 0
-        padding = [(top_pad, bottom_pad), (left_pad, right_pad)]
+        padding = [(top_pad, bottom_pad), (left_pad, right_pad), (0, 0)]
         image = np.pad(image, padding, mode='constant', constant_values=0)
         window = (top_pad, left_pad, h + top_pad, w + left_pad)
     elif mode == "crop":
