@@ -362,8 +362,8 @@ class Dataset(object):
              image = skimage.color.gray2rgb(image) #Instead of rgb2gray(image)
  
          # Extending the size of the image to be (h,w,1)
-         image = image[..., np.newaxis]
-         return image
+        image = image[..., np.newaxis]
+        return image
 
     def load_mask(self, image_id):
         """Load instance masks for the given image.
