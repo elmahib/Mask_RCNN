@@ -357,7 +357,7 @@ class Dataset(object):
          """
          # Load image
          image = skimage.io.imread(self.image_info[image_id]['path'])         
-         image = image[..., np.newaxis] # Extending the size of the image to be (h,w,1)
+         #image = image[..., np.newaxis] # Extending the size of the image to be (h,w,1)
          return image
 
     def load_mask(self, image_id):
