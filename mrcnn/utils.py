@@ -357,12 +357,11 @@ class Dataset(object):
          """
          # Load image
         image = skimage.io.imread(self.image_info[image_id]['path']) 
-        # Convert to grayscale for consistency.        
-        if image.ndim != 1:
-             image = skimage.color.gray2rgb(image) #Instead of rgb2gray(image)
+        # Convert to grayscale for consistency.       
+        image = skimage.color.gray2rgb(image) #Instead of rgb2gray(image)
  
          # Extending the size of the image to be (h,w,1)
-        image = image[..., np.newaxis]
+        #image = image[..., np.newaxis]
         return image
 
     def load_mask(self, image_id):
